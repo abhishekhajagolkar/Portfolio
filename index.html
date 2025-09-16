@@ -170,8 +170,7 @@
           transparent,
           transparent 2px,
           rgba(255,255,255,0.03) 2px,
-          rgba(255,255,255,0.03) 4px
-        );
+          rgba(255,255,255,0.03) 4px);
       pointer-events: none;
     }
 
@@ -665,6 +664,46 @@
       box-shadow: 0 5px 15px rgba(111,66,193,.2);
     }
 
+    /* Institution links */
+    .institution-link {
+      color: var(--accent2);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+
+    .institution-link::after {
+      content: '↗';
+      margin-left: 4px;
+      font-size: 0.9em;
+    }
+
+    .institution-link:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Company links */
+    .company-link {
+      color: var(--accent2);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      font-weight: 600;
+    }
+
+    .company-link::after {
+      content: '↗';
+      margin-left: 4px;
+      font-size: 0.9em;
+    }
+
+    .company-link:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
     /* Scroll animations */
     .fade-in {
       opacity: 0;
@@ -922,21 +961,24 @@
     <h2 class="title">Education</h2>
     <div class="grid cols-1">
       <div class="edu-card">
-        <h3>S G Balekundri Institute of Technology, Belagavi</h3>
+        <h3><a>S G Balekundri Institute of Technology, Belagavi</a></h3>
         <p>B.E in Computer Science (2021–2025)</p>
         <p class="highlight">CGPA: 7.03</p>
+        <p><a href="https://drive.google.com/file/d/1c1XdL7E5Gz2jMI5uryrB9p7RFkjgxzvQ/view?usp=sharing" target="_blank" class="cert-link">View Degree Certificate ↗</a></p>
       </div>
 
       <div class="edu-card">
-        <h3>Govindarama Seksaria Science PU College, Belagavi</h3>
+        <h3><a>Govindarama Seksaria Science PU College, Belagavi</a></h3>
         <p>12th / PUC (PCMB) (2019–2021)</p>
         <p class="highlight">Percentage: 63.33%</p>
+        <p><a href="https://drive.google.com/file/d/1B_bqDvHajOn04KODLp1oCt8U7VDo_Tyr/view?usp=sharing" target="_blank" class="cert-link">View 12th Marks Card ↗</a></p>
       </div>
 
       <div class="edu-card">
-        <h3>ST Mary's High School, Belagavi</h3>
+        <h3><a>ST Mary's High School, Belagavi</a></h3>
         <p>10th / SSLC (2007-2019)</p>
         <p class="highlight">Percentage: 75.20%</p>
+        <p><a href="https://drive.google.com/file/d/1ggfOJn-UKDQwLd6rddqHcG5UsOwn6vKs/view?usp=sharing" target="_blank" class="cert-link">View 10th Marks Card ↗</a></p>
       </div>
     </div>
   </section>
@@ -947,30 +989,33 @@
     <h2 class="title">Internship Experience</h2>
     <div class="grid cols-2">
       <div class="card">
-        <h3>Data Analyst Intern</h3>
-        <p class="muted">Eyesec Cyber Security Solutions Pvt. Ltd. | Oct 2023 – Nov 2023</p>
+        <h3>Data Analyst and AIML Intern</h3>
+        <p class="muted"><a> <strong> Eyesec Cyber Security Solutions Pvt. Ltd. </strong> </a> | Oct 2023 – Nov 2023</p>
         <ul class="bullets">
           <li>Analyzed real-world datasets using NumPy, Pandas and Matplotlib</li>
           <li>Improved model interpretability by 25%</li>
           <li>Strengthened foundation in Python programming and SQL CRUD operations</li>
         </ul>
+        <p><a href="https://drive.google.com/file/d/1teAQ0OUMvUBqUH1fWpUKdnpbtHe4cRs_/view?usp=sharing" target="_blank" class="cert-link">View Certificate ↗</a></p>
       </div>
       <div class="card">
         <h3>Data Science Intern</h3>
-        <p class="muted">Rooman Technologies Pvt. Ltd. | Oct 2024 – Feb 2025</p>
+        <p class="muted"><a> <strong> Rooman Technologies Pvt. Ltd.</strong> </a> | Oct 2024 – Feb 2025</p>
         <ul class="bullets">
           <li>Hands-on experience with essential data science libraries</li>
           <li>Cleaned and prepared data, reducing errors by around 30%</li>
         </ul>
+        <p><a href="https://drive.google.com/file/d/1DIPmJXlQjBpOzrdHFwu-zKf2h5MkUXMA/view?usp=sharing" target="_blank" class="cert-link">View Certificate ↗</a></p>
       </div>
       <div class="card">
         <h3>Data Science Intern</h3>
-        <p class="muted">Anytham - Adhyayan Education Services Pvt. Ltd. | Mar 2025 – Aug 2025</p>
+        <p class="muted"><a><Strong>Anytham - Adhyayan Education Services Pvt. Ltd.</strong></a> | Mar 2025 – Aug 2025</p>
         <ul class="bullets">
           <li>Gained practical knowledge in Machine Learning and Data Science</li>
           <li>Certifications in Data Analysis, SQL and ML with Python</li>
           <li>Hands on experience in Generative AI (GPT)</li>
         </ul>
+        <p><a href="" target="_blank" class="cert-link">View Certificate ↗</a></p>
       </div>
     </div>
   </section>
@@ -980,6 +1025,11 @@
   <section id="certifications" class="section fade-in">
     <h2 class="title">Certifications</h2>
     <div class="grid cols-2">
+      <div class="card">
+        <h3>OJT in AIML </h3>
+        <p>I Future Tech (Feb 2025)</p>
+        <a href="https://drive.google.com/file/d/1DKspHtRbisUz59souEMM5_oEAamUdsN7/view?usp=sharing" class="cert-link" target="_blank">View Certificate ↗</a>
+      </div>
       <div class="card">
         <h3>Data Science and ML Internship</h3>
         <p>Rooman Technologies (March 2025)</p>
@@ -1008,7 +1058,7 @@
   <section id="contact" class="section fade-in">
     <h2 class="title">Contact</h2>
     <div class="panel">
-      <p>Open to roles in <strong>Data Science</strong>, <strong>ML/AI</strong>, and <strong>Data Analytics</strong>. Let's collaborate.</p>
+      <p>Open to roles in <strong>Data Science</strong>, <strong>ML/AI</strong>, <strong>Data Analytics</strong>, <strong>Python Developer</strong> and <strong>SQL Developer</strong>. Let's collaborate.</p>
       <div class="nav">
         <a class="btn primary" href="mailto:abhishekhajagolkar523@gmail.com">Email Me</a>
         <a class="btn" href="https://linkedin.com/in/abhishek-hajagolkar-58a6932a8" target="_blank" rel="noopener">LinkedIn</a>
