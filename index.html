@@ -944,11 +944,11 @@
       background: var(--gradient-3);
     }
 
-    /* Enhanced Project Cards with Glow Effect */
+    /* Enhanced Project Cards with Glow Effect - NEW DESIGN */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
     }
 
     .project-card {
@@ -961,6 +961,9 @@
       transform: translateY(30px);
       opacity: 0;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .project-card.animate {
@@ -968,15 +971,43 @@
       opacity: 1;
     }
 
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(108, 141, 250, 0.3);
-      border-color: rgba(108, 141, 250, 0.3);
+    .project-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.1);
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(10, 14, 23, 0.9), transparent);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
     }
 
     .project-header {
       padding: 25px 25px 15px;
-      background: linear-gradient(to right, rgba(108, 141, 250, 0.1), rgba(76, 201, 240, 0.1));
       position: relative;
       overflow: hidden;
     }
@@ -1005,11 +1036,15 @@
 
     .project-content {
       padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card p {
       color: var(--muted);
       margin-bottom: 1.5rem;
+      flex-grow: 1;
     }
 
     .tech-tags {
@@ -1057,7 +1092,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 20px;
+      margin-top: auto;
     }
 
     .project-link {
@@ -1077,6 +1112,109 @@
       gap: 8px;
       background: rgba(108, 141, 250, 0.2);
       transform: translateY(-2px);
+    }
+
+    /* Enhanced Education Section - NEW DESIGN */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+    }
+
+    .education-card {
+      background: var(--panel);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(108, 141, 250, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(30px);
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .education-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .education-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient-1);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .education-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(108, 141, 250, 0.3);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .education-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .education-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient-1);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .education-card h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .education-card .institution {
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    .education-card .date {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      display: block;
+      padding: 5px 12px;
+      background: rgba(108, 141, 250, 0.1);
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    .education-card .highlight {
+      color: var(--accent2);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding: 10px 15px;
+      background: rgba(76, 201, 240, 0.1);
+      border-radius: 10px;
+      border-left: 3px solid var(--accent2);
+    }
+
+    .education-details {
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: 1px solid rgba(108, 141, 250, 0.1);
     }
 
     /* Enhanced Internship Section */
@@ -1194,79 +1332,6 @@
       right: 15px;
       font-size: 1.5rem;
       color: rgba(108, 141, 250, 0.3);
-    }
-
-    /* Enhanced Education Section */
-    .education-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-    }
-
-    .education-card {
-      background: var(--panel);
-      border-radius: 20px;
-      padding: 30px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(108, 141, 250, 0.1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      transform: translateY(30px);
-      opacity: 0;
-    }
-
-    .education-card.animate {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .education-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: var(--gradient-1);
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-    }
-
-    .education-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(108, 141, 250, 0.3);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-    }
-
-    .education-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .education-card h3 {
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
-    }
-
-    .education-card .institution {
-      color: var(--muted);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .education-card .date {
-      color: var(--muted);
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-      display: block;
-    }
-
-    .education-card .highlight {
-      color: var(--accent2);
-      font-weight: 600;
-      margin-bottom: 1.5rem;
     }
 
     /* Enhanced Contact Section */
@@ -1394,7 +1459,7 @@
       width: 60px;
       height: 60px;
       font-size: 24px;
-      cursor: pointer;
+      cursor: button;
       opacity: 0;
       visibility: hidden;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1466,6 +1531,154 @@
       50% { height: 80px; }
     }
 
+    /* Parallax Scrolling Effect */
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* Text Scramble Effect */
+    .scramble-text {
+      display: inline-block;
+      position: relative;
+    }
+
+    .scramble-text::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -5px;
+      width: 2px;
+      height: 100%;
+      background: var(--accent);
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    /* Hover Glow Effect */
+    .hover-glow {
+      transition: all 0.3s ease;
+    }
+
+    .hover-glow:hover {
+      box-shadow: 0 0 15px var(--accent);
+    }
+
+    /* Magnetic Button Effect */
+    .magnetic-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .magnetic-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .magnetic-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    /* Text Gradient Animation */
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3), var(--accent4));
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradient 5s ease infinite;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Enhanced Scroll Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .slide-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(100px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .slide-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* 3D Flip Card */
+    .flip-card {
+      perspective: 1000px;
+      height: 300px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background: var(--gradient-1);
+    }
+
     /* Responsive Design */
     @media (max-width: 1200px) {
       .timeline::after {
@@ -1507,6 +1720,11 @@
       .profile-container {
         width: 280px;
         height: 280px;
+      }
+
+      .projects-grid,
+      .education-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1583,7 +1801,7 @@
     .delay-3 { animation-delay: 0.3s !important; }
     .delay-4 { animation-delay: 0.4s !important; }
     .delay-5 { animation-delay: 0.5s !important; }
-  </style>
+   </style>
 </head>
 <body>
   <!-- Scroll progress indicator -->
@@ -1596,17 +1814,17 @@
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>
-    <div class="particle"></div>
+    <div class="极客时间particle"></div>
   </div>
 
   <!-- AI Circuit Background -->
   <svg class="ai-circuit" viewBox="0 0 100 100" preserveAspectRatio="none">
     <path class="circuit-path" d="M0,20 Q30,0 50,20 T100,20" />
-    <path class="circuit-path" d="M0,40 Q25,60 50,40 T100,40" />
+    <path class="circuit-path" extreme="M0,40 Q25,60 50,40 T100,40" />
     <path class="circuit-path" d="M0,60 Q30,80 50,60 T100,60" />
     <path class="circuit-path" d="M0,80 Q25,60 50,80 T100,80" />
     <path class="circuit-path" d="M20,0 Q0,30 20,50 T20,100" />
-    <path class="circuit-path" d="M40,0 Q60,25 40,50 T40,100" />
+    <path class="circuit-path" d="极客时间M40,0 Q60,25 极客时间40,50 T40,100" />
     <path class="circuit-path" d="M60,0 Q80,30 60,50 T60,100" />
     <path class="circuit-path" d="M80,0 Q60,25 80,50 T80,100" />
   </svg>
@@ -1624,15 +1842,18 @@
   <nav class="navbar">
     <div class="brand">Abhishek's Portfolio</div>
     <div class="links">
-      <a href="#summary">Summary</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#experience">Experience</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-      <a href="Resume (3).pdf" target="_blank" class="btn secondary">Resume</a>
+      <a href="#summary" class="magnetic-btn">Summary</a>
+      <a href="#projects" class="magnetic-btn">Projects</a>
+      <a href="#skills" class="magnetic-btn">Skills</a>
+      <a href="#education" class="magnetic-btn">Education</a>
+      <a href="#experience" class="magnetic-btn">Experience</a>
+      <a href="#certifications" class="magnetic-btn">Certifications</a>
+      <a href="#contact" class="magnetic-btn">Contact</a>
+      <a href="Resume (3).pdf" target="_blank" class="btn secondary magnetic-btn">Resume</a>
     </div>
+    <button class="mobile-menu-btn">
+      <i class="fas fa-bars"></i>
+    </button>
   </nav>
 
   <!-- Hero Section with Photo -->
@@ -1640,33 +1861,32 @@
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
-
+          <div class="hero-badge">
+            <i class="fas fa-star"></i> AIML Enthusiast
+          </div>
           <h1 class="hero-title">Abhishek Raju Hajagolkar</h1>
-          <p class="hero-subtitle">
+          <p class="hero-subtitle scramble-text">
             Transforming data into intelligent solutions through Machine Learning, AI, and Data Science.
             Passionate about building predictive models and AI-powered applications.
           </p>
           <div class="hero-actions">
-            <a href="#projects" class="btn primary">
+            <a href="#projects" class="btn primary magnetic-btn">
               <i class="fas fa-code"></i> View Projects
             </a>
-            <a href="#contact" class="btn secondary">
+            <a href="#contact" class="btn secondary magnetic-btn">
               <i class="fas fa-paper-plane"></i> Contact Me
             </a>
           </div>
           <div class="hero-features">
-            <div class="feature">
+            <div class="feature hover-glow">
               <i class="fas fa-brain"></i>
-              <span>Machine Learning</span>
+              <span>Data Science</span>
             </div>
-            <div class="feature">
+            <div class="feature hover-glow">
               <i class="fas fa-chart-line"></i>
               <span>Data Analytics</span>
             </div>
-            <div class="feature">
-              <i class="fas fa-robot"></i>
-              <span>Generative AI</span>
-            </div>
+
           </div>
         </div>
         <div class="hero-image">
@@ -1676,14 +1896,16 @@
           </div>
         </div>
       </div>
+
     </div>
   </header>
+
 
   <main class="container">
     <!-- Professional Summary -->
     <section id="summary" class="section">
-      <h2 class="section-title"> Summary</h2>
-      <div class="card">
+      <h2 class="section-title">Summary</h2>
+      <div class="card fade-in">
         <p>
           Data Science professional with expertise in Python, SQL, Machine Learning, and Generative AI.
           Skilled at extracting meaningful insights from complex datasets and building end-to-end data solutions.
@@ -1700,61 +1922,76 @@
     <section id="projects" class="section">
       <h2 class="section-title">Featured Projects</h2>
       <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-header">
-            <h3>Marketing Sales Prediction</h3>
+        <article class="project-card fade-in">
+          <div class="project-image">
+            <img src="https://placehold.co/600x400/6c8dfa/ffffff?text=Marketing+Sales" alt="Marketing Sales Prediction">
+            <div class="project-overlay">
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">ML</span>
+              </div>
+            </div>
           </div>
           <div class="project-content">
+            <h3>Marketing Sales Prediction</h3>
             <p>Flask-based web application that uses machine learning to predict product sales based on marketing budget allocation.</p>
-            <div class="tech-tags">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Flask</span>
-              <span class="tech-tag">Machine Learning</span>
-              <span class="tech-tag">Bootstrap</span>
-            </div>
             <div class="project-links">
               <a href="https://abhishek6093.pythonanywhere.com/" target="_blank" class="project-link">
                 Live Demo <i class="fas fa-external-link-alt"></i>
               </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-header">
-            <h3>Customer Churn Prediction</h3>
-          </div>
-          <div class="project-content">
-            <p>Classification model to predict customer churn using various parameters with a Flask web interface.</p>
-            <div class="tech-tags">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Classification</span>
-              <span class="tech-tag">Flask</span>
-              <span class="tech-tag">Scikit-learn</span>
-            </div>
-            <div class="project-links">
-              <a href="https://abhishek7869.pythonanywhere.com/" target="_blank" class="project-link">
-                Live Demo <i class="fas fa-external-link-alt"></i>
+              <a href="https://github.com/abhishekhajagolkar/Sales-Prediction" class="project-link">
+                Code <i class="fab fa-github"></i>
               </a>
             </div>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <h3>AI Finance Planner</h3>
+        <article class="project-card fade-in">
+          <div class="project-image">
+            <img src="https://placehold.co/600x400/4cc9f0/ffffff?text=Customer+Churn" alt="Customer Churn Prediction">
+            <div class="project-overlay">
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Classification</span>
+                <span class="tech-tag">Flask</span>
+              </div>
+            </div>
           </div>
           <div class="project-content">
-            <p>Gen AI powered finance management application using Google's Gemini AI and Flask framework.</p>
-            <div class="tech-tags">
-              <span class="tech-tag">Generative AI</span>
-              <span class="tech-tag">Gemini API</span>
-              <span class="tech-tag">Flask</span>
-              <span class="tech-tag">Python</span>
+            <h3>Customer Churn Prediction</h3>
+            <p>Classification model to predict customer churn using various parameters with a Flask web interface.</p>
+            <div class="project-links">
+              <a href="https://abhishek7869.pythonanywhere.com/" target="_blank" class="project-link">
+                Live Demo <i class="fas fa-external-link-alt"></i>
+              </a>
+              <a href="https://github.com/abhishekhajagolkar/Customer-Churn-Prediction" class="project-link">
+                Code <i class="fab fa-github"></i>
+              </a>
             </div>
+          </div>
+        </article>
+
+        <article class="project-card fade-in">
+          <div class="project-image">
+            <img src="https://placehold.co/600x400/f72585/ffffff?text=AI+Finance" alt="AI Finance Planner">
+            <div class="project-overlay">
+              <div class="tech-tags">
+                <span class="tech-tag">Generative AI</span>
+                <span class="tech-tag">Gemini API</span>
+                <span class="tech-tag">Flask</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>AI Finance Planner</h3>
+            <p>Gen AI powered finance management application using Google's Gemini AI and Flask framework.</p>
             <div class="project-links">
               <a href="https://abhishek9595.pythonanywhere.com/" target="_blank" class="project-link">
                 Live Demo <i class="fas fa-external-link-alt"></i>
+              </a>
+              <a href="https://github.com/abhishekhajagolkar/AI-Finance-Planner" class="project-link">
+                Code <i class="fab fa-github"></i>
               </a>
             </div>
           </div>
@@ -1768,11 +2005,9 @@
     <section id="skills" class="section">
       <h2 class="section-title">Technical Skills</h2>
       <div class="skills-container">
-
-
         <div class="skills-grid">
           <!-- Programming & Data Science -->
-          <div class="skill-category programming">
+          <div class="skill-category programming fade-in">
             <div class="category-header">
               <div class="category-icon">
                 <i class="fas fa-code"></i>
@@ -1790,7 +2025,6 @@
                     <div class="skill-bar" data-width="90"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">90%</span>
                   </div>
                 </div>
@@ -1806,7 +2040,6 @@
                     <div class="skill-bar" data-width="85"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">85%</span>
                   </div>
                 </div>
@@ -1822,7 +2055,6 @@
                     <div class="skill-bar" data-width="88"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">88%</span>
                   </div>
                 </div>
@@ -1838,7 +2070,6 @@
                     <div class="skill-bar" data-width="82"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">82%</span>
                   </div>
                 </div>
@@ -1854,7 +2085,6 @@
                     <div class="skill-bar" data-width="80"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">80%</span>
                   </div>
                 </div>
@@ -1870,7 +2100,6 @@
                     <div class="skill-bar" data-width="78"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">78%</span>
                   </div>
                 </div>
@@ -1879,7 +2108,7 @@
           </div>
 
           <!-- Machine Learning & AI -->
-          <div class="skill-category ml">
+          <div class="skill-category ml fade-in">
             <div class="category-header">
               <div class="category-icon">
                 <i class="fas fa-brain"></i>
@@ -1897,7 +2126,6 @@
                     <div class="skill-bar" data-width="85"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">85%</span>
                   </div>
                 </div>
@@ -1913,7 +2141,6 @@
                     <div class="skill-bar" data-width="75"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">75%</span>
                   </div>
                 </div>
@@ -1929,7 +2156,6 @@
                     <div class="skill-bar" data-width="83"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">83%</span>
                   </div>
                 </div>
@@ -1945,7 +2171,6 @@
                     <div class="skill-bar" data-width="87"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">87%</span>
                   </div>
                 </div>
@@ -1961,20 +2186,15 @@
                     <div class="skill-bar" data-width="70"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">70%</span>
                   </div>
-                </div>
-              </div>
-
-
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Tools & Technologies -->
-          <div class="skill-category tools">
+          <div class="skill-category tools fade-in">
             <div class="category-header">
               <div class="category-icon">
                 <i class="fas fa-tools"></i>
@@ -1992,7 +2212,6 @@
                     <div class="skill-bar" data-width="90"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">90%</span>
                   </div>
                 </div>
@@ -2008,7 +2227,6 @@
                     <div class="skill-bar" data-width="88"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">88%</span>
                   </div>
                 </div>
@@ -2024,7 +2242,6 @@
                     <div class="skill-bar" data-width="80"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">80%</span>
                   </div>
                 </div>
@@ -2040,7 +2257,6 @@
                     <div class="skill-bar" data-width="82"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">82%</span>
                   </div>
                 </div>
@@ -2056,7 +2272,6 @@
                     <div class="skill-bar" data-width="85"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">85%</span>
                   </div>
                 </div>
@@ -2072,7 +2287,6 @@
                     <div class="skill-bar" data-width="78"></div>
                   </div>
                   <div class="skill-level">
-
                     <span class="skill-percentage">78%</span>
                   </div>
                 </div>
@@ -2089,34 +2303,49 @@
     <section id="education" class="section">
       <h2 class="section-title">Education</h2>
       <div class="education-grid">
-        <div class="education-card">
-          <h3>S G Balekundri Institute of Technology, Belagavi</h3>
-          <span class="institution">B.E in Computer Science</span>
+        <div class="education-card fade-in">
+          <div class="education-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Bachelor of Engineering in Computer Science</h3>
+          <span class="institution">S G Balekundri Institute of Technology, Belagavi</span>
           <span class="date">2021 – 2025</span>
           <div class="highlight">CGPA: 7.03</div>
-          <a href="https://drive.google.com/file/d/1c1XdL7E5Gz2jMI5uryrB9p7RFkjgxzvQ/view?usp=sharing" target="_blank" class="project-link">
-            View Certificate <i class="fas fa-external-link-alt"></i>
-          </a>
+          <div class="education-details">
+            <a href="https://drive.google.com/file/d/1c1XdL7E5Gz2jMI5uryrB9p7RFkjgxzvQ/view?usp=sharing" target="_blank" class="project-link">
+              View Certificate <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="education-card">
-          <h3>Govindarama Seksaria Science PU College, Belagavi</h3>
-          <span class="institution">12th / PUC (PCMB)</span>
+        <div class="education-card fade-in">
+          <div class="education-icon">
+            <i class="fas fa-school"></i>
+          </div>
+          <h3>12th / PUC (PCMB)</h3>
+          <span class="institution">Govindarama Seksaria Science PU College, Belagavi</span>
           <span class="date">2019 – 2021</span>
           <div class="highlight">Percentage: 63.33%</div>
-          <a href="https://drive.google.com/file/d/1B_bqDvHajOn04KODLp1oCt8U7VDo_Tyr/view?usp=sharing" target="_blank" class="project-link">
-            View Marks Card <i class="fas fa-external-link-alt"></i>
-          </a>
+          <div class="education-details">
+            <a href="https://drive.google.com/file/d/1B_bqDvHajOn04KODLp1oCt8U7VDo_Tyr/view?usp=sharing" target="_blank" class="project-link">
+              View Marks Card <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="education-card">
-          <h3>ST Mary's High School, Belagavi</h3>
-          <span class="institution">10th / SSLC</span>
+        <div class="education-card fade-in">
+          <div class="education-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3>10th / SSLC</h3>
+          <span class="institution">ST Mary's High School, Belagavi</span>
           <span class="date">2007 - 2019</span>
           <div class="highlight">Percentage: 75.20%</div>
-          <a href="https://drive.google.com/file/d/1ggfOJn-UKDQwLd6rddqHcG5UsOwn6vKs/view?usp=sharing" target="_blank" class="project-link">
-            View Marks Card <i class="fas fa-external-link-alt"></i>
-          </a>
+          <div class="education-details">
+            <a href="https://drive.google.com/file/d/1ggfOJn-UKDQwLd6rddqHcG5UsOwn6vKs/view?usp=sharing" target="_blank" class="project-link">
+              View Marks Card <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -2127,7 +2356,7 @@
     <section id="experience" class="section">
       <h2 class="section-title">Internship Experience</h2>
       <div class="timeline">
-        <div class="timeline-item">
+        <div class="timeline-item fade-in">
           <div class="timeline-content">
             <i class="fas fa-laptop-code timeline-icon"></i>
             <span class="timeline-date">Oct 2023 – Nov 2023</span>
@@ -2144,7 +2373,7 @@
           </div>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item fade-in">
           <div class="timeline-content">
             <i class="fas fa-chart-line timeline-icon"></i>
             <span class="timeline-date">Oct 2024 – Feb 2025</span>
@@ -2160,7 +2389,7 @@
           </div>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item fade-in">
           <div class="timeline-content">
             <i class="fas fa-robot timeline-icon"></i>
             <span class="timeline-date">Mar 2025 – Aug 2025</span>
@@ -2182,35 +2411,35 @@
     <section id="certifications" class="section">
       <h2 class="section-title">Certifications</h2>
       <div class="grid cols-3">
-        <div class="card">
+        <div class="card fade-in">
           <h3>OJT in AIML</h3>
           <p>I Future Tech (Feb 2025)</p>
           <a href="https://drive.google.com/file/d/1DKspHtRbisUz59souEMM5_oEAamUdsN7/view?usp=sharing" class="project-link" target="_blank">
             View Certificate <i class="fas fa-external-link-alt"></i>
           </a>
         </div>
-        <div class="card">
+        <div class="card fade-in">
           <h3>Data Science and ML Internship</h3>
           <p>Rooman Technologies (March 2025)</p>
           <a href="https://drive.google.com/file/d/1DIPmJXlQjBpOzrdHFwu-zKf2h5MkUXMA/view" class="project-link" target="_blank">
             View Certificate <i class="fas fa-external-link-alt"></i>
           </a>
         </div>
-        <div class="card">
+        <div class="card fade-in">
           <h3>Data Analytics Job Simulation</h3>
           <p>Deloitte (June 2025)</p>
           <a href="https://drive.google.com/file/d/1Wa77p-08WCY6UKU3kcl8KxQqO5fiNRoS/view" class="project-link" target="_blank">
             View Certificate <i class="fas fa-external-link-alt"></i>
           </a>
         </div>
-        <div class="card">
+        <div class="card fade-in">
           <h3>Data Science Job Simulation</h3>
           <p>TATA Forage (June 2025)</p>
           <a href="https://drive.google.com/file/d/19fHDA7rmB7EPDkcs9JIPpCwIb_rf7eUF/view" class="project-link" target="_blank">
             View Certificate <i class="fas fa-external-link-alt"></i>
           </a>
         </div>
-        <div class="card">
+        <div class="card fade-in">
           <h3>Python Libraries for Data Science</h3>
           <p>Simplilearn (September 2025)</p>
           <a href="https://drive.google.com/file/d/1oIHJ8_tFIMM-jlAVxp8qq3EqOi9MWtS5/view?usp=sharing" class="project-link" target="_blank">
@@ -2225,20 +2454,20 @@
     <!-- Contact Section -->
     <section id="contact" class="section">
       <h2 class="section-title">Get In Touch</h2>
-      <div class="contact-panel">
+      <div class="contact-panel fade-in">
         <p>I'm currently looking for opportunities in <strong>Data Science</strong>, <strong>ML/AI</strong>, <strong>Data Analytics</strong>, <strong>Python Development</strong> and <strong>SQL Development</strong>. Let's connect and discuss how I can contribute to your team!</p>
 
         <div class="contact-links">
-          <a href="mailto:abhishekhajagolkar523@gmail.com" class="contact-link">
+          <a href="mailto:abhishekhajagolkar523@gmail.com" class="contact-link magnetic-btn">
             <i class="fas fa-envelope"></i> Email
           </a>
-          <a href="https://linkedin.com/in/abhishek-hajagolkar-58a6932a8" target="_blank" class="contact-link">
+          <a href="https://linkedin.com/in/abhishek-hajagolkar-58a6932a8" target="_blank" class="contact-link magnetic-btn">
             <i class="fab fa-linkedin"></i> LinkedIn
           </a>
-          <a href="https://github.com/abhishekhajagolkar" target="_blank" class="contact-link">
+          <a href="https://github.com/abhishekhajagolkar" target="_blank" class="contact-link magnetic-btn">
             <i class="fab fa-github"></i> GitHub
           </a>
-          <a href="tel:+918884461909" class="contact-link">
+          <a href="tel:+918884461909" class="contact-link magnetic-btn">
             <i class="fas fa-phone"></i> +91 8884461909
           </a>
         </div>
@@ -2319,7 +2548,7 @@
       });
     });
 
-    // Intersection Observer for animations
+    // Enhanced Intersection Observer for animations
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -2329,12 +2558,13 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate');
+          entry.target.classList.add('visible');
         }
       });
     }, observerOptions);
 
     // Observe elements for animation
-    document.querySelectorAll('.section-title, .card, .timeline-item, .project-card, .education-card, .contact-panel').forEach(el => {
+    document.querySelectorAll('.section-title, .card, .timeline-item, .project-card, .education-card, .contact-panel, .fade-in, .slide-in-left, .slide-in-right').forEach(el => {
       observer.observe(el);
     });
 
@@ -2358,13 +2588,37 @@
       });
     }
 
-    // Typing effect for hero section
-    const words = ['Data Scientist', 'ML Engineer', 'AI Enthusiast', 'Analytics Expert'];
+    // Magnetic button effect
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+      btn.addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const moveX = (x - centerX) * 0.2;
+        const moveY = (y - centerY) * 0.2;
+
+        this.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+
+      btn.addEventListener('mouseleave', function() {
+        this.style.transform = '';
+      });
+    });
+
+    // Enhanced typing effect for hero section
+    const words = ['Data Science', 'Data Analyst', 'Generative AI', 'Python Developer'];
     let currentWord = 0;
     let currentChar = 0;
     let isDeleting = false;
+    let isPaused = false;
 
     function typeEffect() {
+      if (isPaused) return;
+
       const element = document.querySelector('.hero-subtitle');
       const fullWord = words[currentWord];
 
@@ -2388,6 +2642,19 @@
       }
 
       setTimeout(typeEffect, typeSpeed);
+    }
+
+    // Pause typing effect on hover
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroSubtitle) {
+      heroSubtitle.addEventListener('mouseenter', () => {
+        isPaused = true;
+      });
+
+      heroSubtitle.addEventListener('mouseleave', () => {
+        isPaused = false;
+        setTimeout(typeEffect, 1000);
+      });
     }
 
     // Create binary rain effect
@@ -2464,6 +2731,90 @@
       }
     }
 
+    // Parallax scrolling effect
+    function setupParallax() {
+      const parallaxElements = document.querySelectorAll('.parallax');
+
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+
+        parallaxElements.forEach(element => {
+          const speed = 0.5;
+          element.style.transform = `translateY(${scrollPosition * speed}px)`;
+        });
+      });
+    }
+
+    // Text scramble effect
+    function setupTextScramble() {
+      const scrambleElements = document.querySelectorAll('.scramble-text');
+
+      scrambleElements.forEach(element => {
+        const originalText = element.textContent;
+        const chars = '!<>-_\\/[]{}—=+*^?#________';
+
+        let interval = null;
+        let frame = 0;
+        let queue = [];
+
+        element.addEventListener('mouseenter', () => {
+          let resolve = null;
+          const promise = new Promise(r => resolve = r);
+
+          function update() {
+            let output = '';
+            let complete = 0;
+
+            for (let i = 0, n = queue.length; i < n; i++) {
+              let { from, to, start, end, char } = queue[i];
+
+              if (frame >= end) {
+                complete++;
+                output += to;
+              } else if (frame >= start) {
+                if (!char || Math.random() < 0.28) {
+                  char = chars[Math.floor(Math.random() * chars.length)];
+                  queue[i].char = char;
+                }
+
+                output += char;
+              } else {
+                output += from;
+              }
+            }
+
+            element.textContent = output;
+
+            if (complete === queue.length) {
+              cancelAnimationFrame(interval);
+              resolve();
+            } else {
+              frame++;
+              requestAnimationFrame(update);
+            }
+          }
+
+          queue = [];
+
+          for (let i = 0; i < originalText.length; i++) {
+            const from = originalText[i] || '';
+            const to = originalText[i] || '';
+            const start = Math.floor(Math.random() * 40);
+            const end = start + Math.floor(Math.random() * 40);
+            queue.push({ from, to, start, end });
+          }
+
+          cancelAnimationFrame(interval);
+          frame = 0;
+          update();
+        });
+
+        element.addEventListener('mouseleave', () => {
+          element.textContent = originalText;
+        });
+      });
+    }
+
     // Start animations after page load
     window.addEventListener('load', () => {
       setTimeout(typeEffect, 2000);
@@ -2471,6 +2822,8 @@
       createParticleNetwork();
       createDataViz();
       animateSkillBars();
+      setupParallax();
+      setupTextScramble();
     });
   </script>
 </body>
