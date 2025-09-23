@@ -302,7 +302,7 @@
     }
 
     .section {
-      padding: 100px 0;
+      padding: 80px 0;
       position: relative;
     }
 
@@ -325,14 +325,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 30px;
+      padding: 1rem 30px;
       border-bottom: 1px solid rgba(108, 141, 250, 0.2);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     nav.navbar.shrink {
-      padding: 0.75rem 30px;
+      padding: 0.5rem 30px;
       background: rgba(10, 14, 23, 0.98);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
@@ -476,14 +476,14 @@
       transform: translateY(-3px);
     }
 
-    /* Enhanced Hero Section with Photo */
+    /* Enhanced Hero Section with Photo - REDUCED GAP */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       position: relative;
       overflow: hidden;
-      padding: 140px 0 80px;
+      padding: 80px 0 40px; /* Reduced padding from 140px to 80px */
     }
 
     .hero::before {
@@ -1814,17 +1814,17 @@
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>
-    <div class="极客时间particle"></div>
+    <div class="particle"></div>
   </div>
 
   <!-- AI Circuit Background -->
   <svg class="ai-circuit" viewBox="0 0 100 100" preserveAspectRatio="none">
     <path class="circuit-path" d="M0,20 Q30,0 50,20 T100,20" />
-    <path class="circuit-path" extreme="M0,40 Q25,60 50,40 T100,40" />
+    <path class="circuit-path" d="M0,40 Q25,60 50,40 T100,40" />
     <path class="circuit-path" d="M0,60 Q30,80 50,60 T100,60" />
     <path class="circuit-path" d="M0,80 Q25,60 50,80 T100,80" />
     <path class="circuit-path" d="M20,0 Q0,30 20,50 T20,100" />
-    <path class="circuit-path" d="极客时间M40,0 Q60,25 极客时间40,50 T40,100" />
+    <path class="circuit-path" d="M40,0 Q60,25 40,50 T40,100" />
     <path class="circuit-path" d="M60,0 Q80,30 60,50 T60,100" />
     <path class="circuit-path" d="M80,0 Q60,25 80,50 T80,100" />
   </svg>
@@ -1865,10 +1865,7 @@
             <i class="fas fa-star"></i> AIML Enthusiast
           </div>
           <h1 class="hero-title">Abhishek Raju Hajagolkar</h1>
-          <p class="hero-subtitle scramble-text">
-            Transforming data into intelligent solutions through Machine Learning, AI, and Data Science.
-            Passionate about building predictive models and AI-powered applications.
-          </p>
+
           <div class="hero-actions">
             <a href="#projects" class="btn primary magnetic-btn">
               <i class="fas fa-code"></i> View Projects
@@ -1886,7 +1883,14 @@
               <i class="fas fa-chart-line"></i>
               <span>Data Analytics</span>
             </div>
-
+            <div class="feature hover-glow">
+              <i class="fas fa-robot"></i>
+              <span>Machine Learning</span>
+            </div>
+            <div class="feature hover-glow">
+              <i class="fas fa-magic"></i>
+              <span>Generative AI</span>
+            </div>
           </div>
         </div>
         <div class="hero-image">
@@ -1896,10 +1900,8 @@
           </div>
         </div>
       </div>
-
     </div>
   </header>
-
 
   <main class="container">
     <!-- Professional Summary -->
@@ -2455,7 +2457,7 @@
     <section id="contact" class="section">
       <h2 class="section-title">Get In Touch</h2>
       <div class="contact-panel fade-in">
-        <p>I'm currently looking for opportunities in <strong>Data Science</strong>, <strong>ML/AI</strong>, <strong>Data Analytics</strong>, <strong>Python </strong> and <strong>SQL Development</strong>. Let's connect and discuss how I can contribute to your team!</p>
+        <p>I'm currently looking for opportunities in <strong>Data Science</strong>, <strong>ML/AI</strong>, <strong>Data Analytics</strong>, <strong>Python Development</strong> and <strong>SQL Development</strong>. Let's connect and discuss how I can contribute to your team!</p>
 
         <div class="contact-links">
           <a href="mailto:abhishekhajagolkar523@gmail.com" class="contact-link magnetic-btn">
@@ -2610,7 +2612,7 @@
     });
 
     // Enhanced typing effect for hero section
-    const words = ['Data Science', 'Data Analyst', 'Generative AI', 'Python Developer'];
+
     let currentWord = 0;
     let currentChar = 0;
     let isDeleting = false;
